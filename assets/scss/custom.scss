@@ -1,17 +1,18 @@
-/* 隐藏侧边栏的头像 (包括那个 emoji) */
-.sidebar .profile .avatar-wrapper {
-    display: none !important;
+/* 1. 引入谷歌字体：思源宋体 (Noto Serif SC) */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap');
+
+/* 2. 强制应用到全站 */
+body, h1, h2, h3, h4, h5, h6, p, a, span {
+    font-family: 'Noto Serif SC', 'Ma Shan Zheng', serif !important;
 }
 
-/* 隐藏侧边栏的博客标题 (皮的猫's blog) */
-.sidebar .profile .site-name {
+/* --- 下面是你之前的代码 (隐藏头像等) --- */
+.sidebar .site-avatar {
     display: none !important;
 }
-
-/* (可选) 如果你想连底下的简介也一起隐藏，把下面这行的注释去掉 */
-/* .sidebar .profile .subtitle { display: none !important; } */
-
-/* 调整一下剩余内容的间距，防止顶太高 */
-.sidebar .profile {
+.sidebar .site-name {
+    display: none !important;
+}
+.sidebar .site-meta {
     margin-top: 20px;
 }
