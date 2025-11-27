@@ -19,12 +19,13 @@ disableLanguages = ["en"]
         weight = 1
         title = "皮的猫's blog"
         contentDir = "content"
+        menus = "replace" 
 
         # Stack 主题 sidebar 需要的是 object，而不是字符串
         [languages.zh-cn.params]
           [languages.zh-cn.params.sidebar]
             title = "皮的猫"
-            subtitle = "记录生活与技术"
+            # subtitle = "记录生活与技术"
 
         # --- 中文菜单 ---
         [[languages.zh-cn.menu.main]]
