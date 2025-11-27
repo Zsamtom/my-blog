@@ -5,27 +5,28 @@ languageCode = "zh-cn"
 defaultContentLanguage = "zh-cn"
 hasCJKLanguage = true
 
-# 2. 强制禁用英文 (这一行是消灭英文菜单的关键)
+# 2. 强制禁用英文
 disableLanguages = ["en"]
 
 [pagination]
     pagerSize = 5
 
-# 3. 语言与菜单配置 (全部写在这里，就不会乱了)
+# 3. 语言与菜单配置
 [languages]
+
     [languages.zh-cn]
         languageName = "Chinese"
         weight = 1
         title = "皮的猫's blog"
         contentDir = "content"
-        
-        # 定义侧边栏参数 (必须有这行，否则报错)
-        [languages.zh-cn.params]
-            sidebar = "left"
 
-        # --- 这里定义你的中文菜单 ---
-        
-        # 首页
+        # Stack 主题 sidebar 需要的是 object，而不是字符串
+        [languages.zh-cn.params]
+          [languages.zh-cn.params.sidebar]
+            title = "皮的猫"
+            subtitle = "记录生活与技术"
+
+        # --- 中文菜单 ---
         [[languages.zh-cn.menu.main]]
             identifier = "home"
             name = "主页"
@@ -33,7 +34,6 @@ disableLanguages = ["en"]
             weight = 1
             params = { icon = "home" }
 
-        # 文章
         [[languages.zh-cn.menu.main]]
             identifier = "archives"
             name = "文章"
@@ -41,7 +41,6 @@ disableLanguages = ["en"]
             weight = 2
             params = { icon = "search" }
 
-        # 关于
         [[languages.zh-cn.menu.main]]
             identifier = "about"
             name = "关于"
@@ -49,7 +48,6 @@ disableLanguages = ["en"]
             weight = 3
             params = { icon = "user" }
 
-        # 友链
         [[languages.zh-cn.menu.main]]
             identifier = "links"
             name = "友链"
