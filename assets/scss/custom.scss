@@ -1,17 +1,16 @@
-/* 隐藏侧边栏的头像 (包括那个 emoji) */
-.sidebar .profile .avatar-wrapper {
+/* --- 修正后的隐藏代码 --- */
+
+/* 1. 隐藏侧边栏的头像区域 (包括图片和那个圆圈) */
+.sidebar .site-avatar {
     display: none !important;
 }
 
-/* 隐藏侧边栏的博客标题 (皮的猫's blog) */
-.sidebar .profile .site-name {
+/* 2. 隐藏侧边栏的博客标题 (皮的猫's blog) */
+.sidebar .site-name {
     display: none !important;
 }
 
-/* (可选) 如果你想连底下的简介也一起隐藏，把下面这行的注释去掉 */
-/* .sidebar .profile .subtitle { display: none !important; } */
-
-/* 调整一下剩余内容的间距，防止顶太高 */
-.sidebar .profile {
+/* 3. (可选) 调整一下剩余内容(简介)的顶部间距，防止贴得太紧 */
+.sidebar .site-meta {
     margin-top: 20px;
 }
