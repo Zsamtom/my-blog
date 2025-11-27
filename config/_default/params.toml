@@ -76,8 +76,11 @@ enabled = true
 
 ## Comments
 [comments]
-enabled = true
-provider = "disqus"
+enabled = false
+provider = ""
+
+[comments.disqus]
+shortname = ""
 
 [comments.disqusjs]
 shortname = ""
@@ -149,13 +152,7 @@ clientSecret = ""
 host = ""
 id = ""
 
+## Analytics (修复报错添加)
 [analytics]
     [analytics.google]
         id = ""
-
-[comments]
-    enabled = false
-    provider = ""
-
-[comments.disqus]
-    shortname = ""
