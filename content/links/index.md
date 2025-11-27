@@ -4,11 +4,6 @@ description: "我的朋友们"
 date: 2025-11-27
 image: 
 comments: true
-menu:
-    main:
-        weight: 3
-        params:
-            icon: link
 ---
 
 如果有需要添加友链的，请电邮 `你的邮箱@qq.com`，希望是生活向的博客哦~

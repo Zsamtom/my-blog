@@ -1,33 +1,26 @@
-# 1. 基础设置
 baseurl = "https://my-blog-enu.pages.dev/"
 title = "皮的猫's blog"
 languageCode = "zh-cn"
 defaultContentLanguage = "zh-cn"
 hasCJKLanguage = true
 
-# 2. 强制禁用英文
+# 【核武器】彻底禁用英文，防止 Home/Archives 自动出现
 disableLanguages = ["en"]
 
 [pagination]
     pagerSize = 5
 
-# 3. 语言与菜单配置
 [languages]
-
     [languages.zh-cn]
         languageName = "Chinese"
         weight = 1
         title = "皮的猫's blog"
         contentDir = "content"
-        menus = "replace" 
-
-        # Stack 主题 sidebar 需要的是 object，而不是字符串
+        
         [languages.zh-cn.params]
-          [languages.zh-cn.params.sidebar]
-            title = "皮的猫"
-            # subtitle = "记录生活与技术"
+            sidebar = "left"
 
-        # --- 中文菜单 ---
+        # --- 菜单配置 (全站唯一入口) ---
         [[languages.zh-cn.menu.main]]
             identifier = "home"
             name = "主页"
