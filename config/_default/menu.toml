@@ -22,7 +22,7 @@
     name = "文章"
     url = "/archives/"
     weight = 3
-    params = { icon = "box" }
+    params = { icon = "search" } 
 
 # 4. 搜索
 [[main]]
