@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* 1. 引入谷歌字体：思源宋体 (Noto Serif SC) */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap');
 
@@ -13,6 +14,21 @@ body, h1, h2, h3, h4, h5, h6, p, a, span {
 .sidebar .site-name {
     display: none !important;
 }
+=======
+/* --- 修正后的隐藏代码 --- */
+
+/* 1. 隐藏侧边栏的头像区域 (包括图片和那个圆圈) */
+.sidebar .site-avatar {
+    display: none !important;
+}
+
+/* 2. 隐藏侧边栏的博客标题 (皮的猫's blog) */
+.sidebar .site-name {
+    display: none !important;
+}
+
+/* 3. (可选) 调整一下剩余内容(简介)的顶部间距，防止贴得太紧 */
+>>>>>>> 68c68009c07a9c10c992f5c94c801155e808b021
 .sidebar .site-meta {
     margin-top: 20px;
 }
