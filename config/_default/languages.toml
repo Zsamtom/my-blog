@@ -3,6 +3,4 @@
     contentDir = "content"
     weight = 1
     title = "皮的猫's blog"
-
-    [zh-cn.params]
-        sidebar = "left"
+    
