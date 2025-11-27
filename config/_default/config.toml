@@ -4,12 +4,13 @@ languageCode = "zh-cn"
 defaultContentLanguage = "zh-cn"
 hasCJKLanguage = true
 
-# 【核武器】彻底禁用英文，防止 Home/Archives 自动出现
+# 2. 强制禁用英文
 disableLanguages = ["en"]
 
 [pagination]
     pagerSize = 5
 
+# 3. 语言与菜单配置
 [languages]
     [languages.zh-cn]
         languageName = "Chinese"
@@ -17,10 +18,12 @@ disableLanguages = ["en"]
         title = "皮的猫's blog"
         contentDir = "content"
         
+        # 【关键修复点】
+        # 这里原本有一行 sidebar = "left"，已经被我删掉了！
+        # 必须留空或者只写 [languages.zh-cn.params]，不能赋值。
         [languages.zh-cn.params]
-            sidebar = "left"
 
-        # --- 菜单配置 (全站唯一入口) ---
+        # --- 中文菜单 ---
         [[languages.zh-cn.menu.main]]
             identifier = "home"
             name = "主页"
