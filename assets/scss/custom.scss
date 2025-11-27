@@ -16,3 +16,9 @@ body, h1, h2, h3, h4, h5, h6, p, a, span {
 .sidebar .site-meta {
     margin-top: 20px;
 }
+/* --- 修复侧边栏简介换行问题 --- */
+.sidebar .site-meta {
+    white-space: nowrap !important; /* 强制不换行 */
+    font-size: 14px !important;     /* 稍微调小字体，防止超出屏幕 */
+    overflow: visible !important;   /* 允许文字稍微突出一丁点 */
+}
