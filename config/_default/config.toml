@@ -51,3 +51,13 @@ disableLanguages = ["en"]
             url = "/links/"
             weight = 4
             params = { icon = "link" }
+        
+        [[languages.zh-cn.menu.main]]
+            identifier = "search" 
+            name = "搜索"
+            url = "/search/"  
+            weight = 5
+            params = { icon = "search" }
+
+[outputs]
+    home = ["HTML", "RSS", "JSON"]
