@@ -152,3 +152,10 @@ id = ""
 [analytics]
     [analytics.google]
         id = ""
+
+[comments]
+    enabled = false
+    provider = ""
+
+[comments.disqus]
+    shortname = ""
