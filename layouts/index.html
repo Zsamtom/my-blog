@@ -1,13 +1,16 @@
 {{ define "main" }}
-    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 60vh; text-align: center;">
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 60vh; text-align: center; margin-bottom: 50px;">
         
         <img src="/img/home-cover.jpg" 
              style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);" 
              alt="主页封面">
              
         <p style="margin-top: 15px; color: #888; font-size: 0.9rem;">
-            私はあの時起こったことを二度と覚えたことがない。
+            私 は あ の 時 起 こ っ た こ と を 二 度 と 覚 え た こ と が な い 。
         </p>
 
     </div>
+
+    {{ partial "footer/footer.html" . }}
+    
 {{ end }}
