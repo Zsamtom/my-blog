@@ -1,4 +1,4 @@
-{{- /* 1. 这里是计算逻辑：遍历所有文章，把字数加起来 */ -}}
+{{- /* 1. 字数统计逻辑 (保持不变) */ -}}
 {{- $scratch := newScratch -}}
 {{- range (where .Site.RegularPages "Type" "post") -}}
     {{- $scratch.Add "wordcount" .WordCount -}}
@@ -8,12 +8,13 @@
 
 <footer class="site-footer">
     <section class="copyright">
-        {{- /* 2. 这里是你想要的那一行自定义文字 */ -}}
+        {{- /* 2. 自定义文字区域 */ -}}
         <div style="margin-bottom: 0.5rem; font-weight: bold;">
-            {{ .Site.Title }} · 发表于 {{ $articleCount }} 篇文章 · 总计 {{ $totalWordCount }} 字
+            {{- /* ↓↓↓↓↓ 下面这一行就是你要改的地方 ↓↓↓↓↓ */ -}}
+            皮貓貓七號機 · 写作了 {{ $articleCount }} 篇文章 · 总计 {{ $totalWordCount }} 字
         </div>
 
-        {{- /* 3. 下面是原本的版权信息 */ -}}
+        {{- /* 3. 版权年份信息 */ -}}
         &copy; 
         {{ if .Site.Params.footer.since }}
             {{ .Site.Params.footer.since }} - 
@@ -27,7 +28,6 @@
             {{ . | safeHTML }} <br />
         {{ end }}
 
-        {{- /* 下面是 Hugo 和 Stack 的版权声明，想删可以删，保留是对作者的尊重 */ -}}
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
         Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="{{ .Site.Data.stack.version }}">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>
