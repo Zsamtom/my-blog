@@ -1,16 +1,17 @@
 baseurl = "https://my-blog-enu.pages.dev/"
+baseurl = "https://你的域名.pages.dev"
 title = "皮的猫's blog"
 languageCode = "zh-cn"
 defaultContentLanguage = "zh-cn"
 hasCJKLanguage = true
 
-# 【核武器】强制禁用英文，Hugo 绝对不会再加载英文菜单了
+# 强制禁用英文，防止捣乱
 disableLanguages = ["en"]
 
 [pagination]
     pagerSize = 5
 
-# 这里直接定义中文环境
+# --- 语言与菜单配置汇总 ---
 [languages]
     [languages.zh-cn]
         languageName = "Chinese"
@@ -18,4 +19,35 @@ disableLanguages = ["en"]
         title = "皮的猫's blog"
         contentDir = "content"
         
+        # 【重点】在这里定义侧边栏参数，防止报错
         [languages.zh-cn.params]
+            # 这里留空即可，但必须要有这个层级
+
+        # 【重点】在这里直接定义菜单，Hugo 绝对不会弄混
+        [[languages.zh-cn.menu.main]]
+            identifier = "home"
+            name = "主页"
+            url = "/"
+            weight = 1
+            params = { icon = "home" }
+
+        [[languages.zh-cn.menu.main]]
+            identifier = "archives"
+            name = "文章"
+            url = "/archives/"
+            weight = 2
+            params = { icon = "search" }
+
+        [[languages.zh-cn.menu.main]]
+            identifier = "about"
+            name = "关于"
+            url = "/about/"
+            weight = 3
+            params = { icon = "user" }
+
+        [[languages.zh-cn.menu.main]]
+            identifier = "links"
+            name = "友链"
+            url = "/links/"
+            weight = 4
+            params = { icon = "link" }
