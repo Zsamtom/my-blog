@@ -1,4 +1,4 @@
-/* 1. 引入谷歌字体：思源宋体 (Noto Serif SC) */
+/* 1. 引入谷歌字体：思源宋体 */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap');
 
 /* 2. 强制应用到全站 */
@@ -6,19 +6,26 @@ body, h1, h2, h3, h4, h5, h6, p, a, span {
     font-family: 'Noto Serif SC', 'Ma Shan Zheng', serif !important;
 }
 
-/* --- 下面是你之前的代码 (隐藏头像等) --- */
+/* 3. 隐藏头像和博客名 */
 .sidebar .site-avatar {
     display: none !important;
 }
 .sidebar .site-name {
     display: none !important;
 }
+
+/* 4. 调整顶部间距 (保持 site-meta 不变，这里是对的) */
 .sidebar .site-meta {
     margin-top: 20px;
 }
-/* --- 修复侧边栏简介换行问题 --- */
-.sidebar .site-meta {
+
+/* 5. 【关键修改】修复简介换行问题 */
+/* 注意：这里改成了 .site-description */
+.sidebar .site-description {
     white-space: nowrap !important; /* 强制不换行 */
-    font-size: 14px !important;     /* 稍微调小字体，防止超出屏幕 */
-    overflow: visible !important;   /* 允许文字稍微突出一丁点 */
+    font-size: 13px !important;     /* 字体小一点 */
+    line-height: 1.5 !important;
+    overflow: visible !important;
+    display: block !important;
+    width: 100%;
 }

@@ -5,12 +5,13 @@ rssFullContent = true
 favicon = "/favicon.png"
 
 [footer]
-since = 2024
+since = 2025  # <--- 帮你改成了今年
 customText = ""
 
 [dateFormat]
-published = "Jan 02, 2006"
-lastUpdated = "Jan 02, 2006 15:04 MST"
+# <--- 帮你改成了中文习惯的 年-月-日 格式
+published = "2006-01-02"
+lastUpdated = "2006-01-02 15:04"
 
 [sidebar]
 emoji = "😼"
@@ -74,7 +75,7 @@ enabled = true
 [imageProcessing.content]
 enabled = true
 
-## Comments
+## Comments (已关闭，防止报错)
 [comments]
 enabled = false
 provider = ""

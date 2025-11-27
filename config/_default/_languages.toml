@@ -1,6 +1,6 @@
-# Rename this file to languages.toml to enable multilingual support
-[en]
-languageName = "English"
-languagedirection = "ltr"
-title = "Example Site"
-weight = 1
+# 设置为中文环境
+[zh-cn]
+    languageName = "Chinese"
+    title = "皮的猫's blog"  # 这里填你的博客标题
+    weight = 1
+    contentDir = "content"   # 告诉 Hugo 文章都在 content 文件夹里
