@@ -1,0 +1,27 @@
+[[main]]
+    identifier = "home"
+    name = "主页"
+    url = "/"
+    weight = 1
+    params = { icon = "home" }
+
+[[main]]
+    identifier = "archives"
+    name = "文章"
+    url = "/archives/"
+    weight = 2
+    params = { icon = "search" }
+
+[[main]]
+    identifier = "about"
+    name = "关于"
+    url = "/about/"
+    weight = 3
+    params = { icon = "user" }
+
+[[main]]
+    identifier = "links"
+    name = "友链"
+    url = "/links/"
+    weight = 4
+    params = { icon = "link" }
