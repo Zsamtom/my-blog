@@ -1,0 +1,22 @@
+{{ define "main" }}
+<div class="main-container">
+    <main class="main-content">
+        {{- range .Site.RegularPages.GroupByDate "2006" -}}
+        <div class="archives-group">
+            <h2 class="archives-date section-title">
+                <a href="{{ $.RelPermalink }}#{{ .Key }}">{{ .Key }}</a>
+            </h2>
+            <div class="article-list--compact">
+                {{- range .Pages -}}
+                    {{ partial "article-list/compact.html" . }}
+                {{- end -}}
+            </div>
+        </div>
+        {{- end -}}
+    </main>
+    
+    <aside class="sidebar right-sidebar sticky">
+        {{ partial "sidebar/right.html" . }}
+    </aside>
+</div>
+{{ end }}
