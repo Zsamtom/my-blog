@@ -29,3 +29,24 @@ body, h1, h2, h3, h4, h5, h6, p, a, span {
     display: block !important;
     width: 100%;
 }
+/* --- 侧边栏布局优化 --- */
+
+/* 1. 开启弹性布局容器 */
+.archive-sidebar {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: space-between !important; /* 左右贴边 */
+    gap: 15px; /* 上下左右的间距 */
+}
+
+/* 2. 默认所有挂件占满一行 (比如归档、搜索) */
+.archive-sidebar .widget {
+    width: 100% !important;
+    margin-bottom: 0 !important; /* 咱们用 gap 控制间距 */
+}
+
+/* 3. 【关键】强制“分类”和“标签云”各占一半宽度 */
+.archive-sidebar .widget-categories,
+.archive-sidebar .widget-tag-cloud {
+    width: calc(50% - 8px) !important; /* 50%减去一点间距，防止换行 */
+}
