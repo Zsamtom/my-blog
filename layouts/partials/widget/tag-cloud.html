@@ -1,0 +1,14 @@
+<section class="widget widget-tag-cloud card">
+    <div class="card-content">
+        <div class="widget-title">
+            <span>🏷️</span>
+            <span>标签墙</span>
+        </div>
+
+        <div class="tagcloud-list">
+            {{ range $.Site.Taxonomies.tags }}
+            <a href="{{ .Page.RelPermalink }}" class="tag-cloud-link">{{ .Page.Title }}</a>
+            {{ end }}
+        </div>
+    </div>
+</section>

@@ -1,0 +1,18 @@
+<section class="widget widget-archives card">
+    <div class="card-content">
+        <div class="widget-title">
+            <span>📅</span> 
+            <span>时光机</span>
+        </div>
+        
+        <ul class="widget-archive--list">
+            {{ range .Site.RegularPages.GroupByDate "2006" }}
+            <li class="widget-archive--item">
+                <a href="{{ $.Site.BaseURL }}/archives/#{{ .Key }}" title="{{ .Key }}">
+                    {{ .Key }} ({{ len .Pages }})
+                </a>
+            </li>
+            {{ end }}
+        </ul>
+    </div>
+</section>
