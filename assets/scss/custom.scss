@@ -29,24 +29,61 @@ body, h1, h2, h3, h4, h5, h6, p, a, span {
     display: block !important;
     width: 100%;
 }
-/* --- 侧边栏布局优化 --- */
+/* --- 侧边栏挂件美化 (复刻 Stack 默认风格) --- */
 
-/* 1. 开启弹性布局容器 */
-.archive-sidebar {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: space-between !important; /* 左右贴边 */
-    gap: 15px; /* 上下左右的间距 */
+/* 1. 让分类和标签的内容变成双列 */
+.widget-category--list, .tagcloud-list {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important; /* 强制分成两列等宽 */
+    gap: 10px !important;
+    padding: 0 !important;
+    list-style: none !important;
 }
 
-/* 2. 默认所有挂件占满一行 (比如归档、搜索) */
-.archive-sidebar .widget {
-    width: 100% !important;
-    margin-bottom: 0 !important; /* 咱们用 gap 控制间距 */
+/* 2. 把每个分类变成“卡片按钮” */
+.widget-category--link, .tag-cloud-link {
+    display: block !important;
+    padding: 10px 15px !important;
+    background-color: rgba(255, 255, 255, 0.05) !important; /* 深色背景 */
+    border-radius: 5px !important;
+    color: var(--card-text-color-main) !important;
+    font-size: 14px !important;
+    text-decoration: none !important;
+    border-left: 4px solid #666; /* 默认灰色左边条 */
+    transition: transform 0.2s;
 }
 
-/* 3. 【关键】强制“分类”和“标签云”各占一半宽度 */
-.archive-sidebar .widget-categories,
-.archive-sidebar .widget-tag-cloud {
-    width: calc(50% - 8px) !important; /* 50%减去一点间距，防止换行 */
+/* 悬停效果 */
+.widget-category--link:hover, .tag-cloud-link:hover {
+    background-color: var(--card-background) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* 3. 给分类加上彩虹色 (模拟截图效果) */
+.widget-category--item:nth-child(1) a { border-left-color: #36cfc9 !important; } /* 青色 */
+.widget-category--item:nth-child(2) a { border-left-color: #9254de !important; } /* 紫色 */
+.widget-category--item:nth-child(3) a { border-left-color: #40a9ff !important; } /* 蓝色 */
+.widget-category--item:nth-child(4) a { border-left-color: #597ef7 !important; } /* 深蓝 */
+.widget-category--item:nth-child(5) a { border-left-color: #ff85c0 !important; } /* 粉色 */
+.widget-category--item:nth-child(6) a { border-left-color: #ffc069 !important; } /* 橙色 */
+/* ...如果不止6个，它会循环默认色，或者你可以继续加... */
+
+/* 4. 美化归档列表 (时光机) */
+.widget-archive--list {
+    padding: 0 !important;
+    list-style: none !important;
+}
+.widget-archive--item {
+    padding: 12px 10px !important;
+    border-bottom: 1px dashed rgba(255,255,255,0.1); /* 虚线分割 */
+    font-size: 15px;
+}
+.widget-archive--item a {
+    display: flex;
+    justify-content: space-between; /* 年份在左，数量在右 */
+    width: 100%;
+    color: var(--card-text-color-main);
+    text-decoration: none;
+    font-weight: bold;
 }

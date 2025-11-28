@@ -9,7 +9,8 @@
             {{ range .Context.Site.RegularPages.GroupByDate "2006" }}
             <li class="widget-archive--item">
                 <a href="/archives/#{{ .Key }}" title="{{ .Key }}">
-                    {{ .Key }} ({{ len .Pages }})
+                    <span>{{ .Key }}</span>
+                    <span style="opacity: 0.6;">{{ len .Pages }}</span>
                 </a>
             </li>
             {{ end }}
