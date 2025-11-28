@@ -1,7 +1,8 @@
 {{ define "main" }}
-<div class="main-container">
-    <main class="main-content">
-        {{- /* 1. 过滤逻辑：只显示 type 为 post 的文章，排除掉"关于"、"友链"等页面 */ -}}
+
+<div style="display: flex; gap: 40px; align-items: flex-start; justify-content: center; flex-wrap: wrap;">
+    
+    <main class="main-content" style="flex-grow: 1; flex-basis: 0; min-width: 300px; max-width: 900px;">
         {{- range (where .Site.RegularPages "Type" "post").GroupByDate "2006" -}}
         <div class="archives-group">
             <h2 class="archives-date section-title">
@@ -16,9 +17,9 @@
         {{- end -}}
     </main>
     
-    {{- /* 2. 侧边栏修复：将 Scope 改为 "homepage"，强制加载主页的那些挂件 */ -}}
-    <aside class="sidebar right-sidebar sticky">
+    <aside class="sidebar right-sidebar sticky" style="width: 300px; flex-shrink: 0;">
         {{ partial "sidebar/right.html" (dict "Context" . "Scope" "homepage") }}
     </aside>
+
 </div>
 {{ end }}
