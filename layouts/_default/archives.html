@@ -1,13 +1,28 @@
 {{ define "main" }}
 
-<div style="display: flex; gap: 40px; align-items: flex-start; justify-content: center; flex-wrap: wrap;">
+<div style="
+    display: grid; 
+    grid-template-columns: minmax(0, 1fr) 300px; 
+    gap: 40px; 
+    width: 100%; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding-top: 20px;
+">
     
-    <main class="main-content" style="flex-grow: 1; flex-basis: 0; min-width: 300px; max-width: 900px;">
+    <div class="archive-content">
         {{- range (where .Site.RegularPages "Type" "post").GroupByDate "2006" -}}
-        <div class="archives-group">
-            <h2 class="archives-date section-title">
+        <div class="archives-group" style="margin-bottom: 50px;">
+            <h2 class="section-title" style="
+                font-size: 2rem; 
+                margin-bottom: 20px; 
+                opacity: 0.6;
+                padding-bottom: 10px;
+                border-bottom: 2px solid var(--card-background);
+            ">
                 <a href="{{ $.RelPermalink }}#{{ .Key }}">{{ .Key }}</a>
             </h2>
+            
             <div class="article-list--compact">
                 {{- range .Pages -}}
                     {{ partial "article-list/compact.html" . }}
@@ -15,11 +30,23 @@
             </div>
         </div>
         {{- end -}}
-    </main>
+    </div>
     
-    <aside class="sidebar right-sidebar sticky" style="width: 300px; flex-shrink: 0;">
+    <div class="archive-sidebar" style="position: sticky; top: 20px;">
         {{ partial "sidebar/right.html" (dict "Context" . "Scope" "homepage") }}
-    </aside>
+    </div>
 
 </div>
+
+<style>
+@media (max-width: 1024px) {
+    div[style*="display: grid"] {
+        grid-template-columns: 1fr !important;
+    }
+    .archive-sidebar {
+        display: none !important; /* 手机上为了美观，通常隐藏右侧边栏，或者把它放到最下面 */
+    }
+}
+</style>
+
 {{ end }}
