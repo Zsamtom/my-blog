@@ -36,7 +36,7 @@ disableLanguages = ["en"]
             name = "文章"
             url = "/archives/"
             weight = 2
-            params = { icon = "search" }
+            params = { icon = "archive" }
 
         [[languages.zh-cn.menu.main]]
             identifier = "about"
