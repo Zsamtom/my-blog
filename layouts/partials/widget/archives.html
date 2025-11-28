@@ -6,9 +6,9 @@
         </div>
         
         <ul class="widget-archive--list">
-            {{ range .Site.RegularPages.GroupByDate "2006" }}
+            {{ range .Context.Site.RegularPages.GroupByDate "2006" }}
             <li class="widget-archive--item">
-                <a href="{{ $.Site.BaseURL }}/archives/#{{ .Key }}" title="{{ .Key }}">
+                <a href="/archives/#{{ .Key }}" title="{{ .Key }}">
                     {{ .Key }} ({{ len .Pages }})
                 </a>
             </li>

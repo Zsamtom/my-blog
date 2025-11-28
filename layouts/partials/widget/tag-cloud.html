@@ -6,8 +6,10 @@
         </div>
 
         <div class="tagcloud-list">
-            {{ range $.Site.Taxonomies.tags }}
-            <a href="{{ .Page.RelPermalink }}" class="tag-cloud-link">{{ .Page.Title }}</a>
+            {{ range .Context.Site.Taxonomies.tags }}
+            <a href="{{ .Page.RelPermalink }}" class="tag-cloud-link">
+                {{ .Page.Title }} <span style="font-size: 0.8em; opacity: 0.7;">({{ .Count }})</span>
+            </a>
             {{ end }}
         </div>
     </div>

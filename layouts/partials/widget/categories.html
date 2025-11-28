@@ -6,9 +6,11 @@
         </div>
         
         <ul class="widget-category--list">
-            {{ range .Site.Taxonomies.categories }}
+            {{ range .Context.Site.Taxonomies.categories }}
             <li class="widget-category--item">
-                <a class="widget-category--link" href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
+                <a class="widget-category--link" href="{{ .Page.RelPermalink }}">
+                    {{ .Page.Title }}
+                </a>
                 <span class="widget-category--count">({{ .Count }})</span>
             </li>
             {{ end }}
