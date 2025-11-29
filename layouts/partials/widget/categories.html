@@ -1,17 +1,16 @@
 <section class="widget widget-categories card">
     <div class="card-content">
         <div class="widget-title">
-            # <span>📂</span>
+            <span>📂</span>
             <span>分类</span>
         </div>
-        
         <ul class="widget-category--list">
             {{ range .Context.Site.Taxonomies.categories }}
             <li class="widget-category--item">
                 <a class="widget-category--link" href="{{ .Page.RelPermalink }}">
-                    {{ .Page.Title }}
+                    <span class="widget-label">{{ .Page.Title }}</span>
+                    <span class="widget-count">{{ .Count }}</span>
                 </a>
-                <span class="widget-category--count">({{ .Count }})</span>
             </li>
             {{ end }}
         </ul>
