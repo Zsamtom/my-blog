@@ -1,14 +1,14 @@
 <section class="widget widget-tag-cloud card">
     <div class="card-content">
         <div class="widget-title">
-            # <span>🏷️</span>
+            <span>🏷️</span>
             <span>标签</span>
         </div>
-
         <div class="tagcloud-list">
             {{ range .Context.Site.Taxonomies.tags }}
             <a href="{{ .Page.RelPermalink }}" class="tag-cloud-link">
-                {{ .Page.Title }} <span style="font-size: 0.8em; opacity: 0.7;">({{ .Count }})</span>
+                <span class="widget-label">{{ .Page.Title }}</span>
+                <span class="widget-count">{{ .Count }}</span>
             </a>
             {{ end }}
         </div>
