@@ -31,85 +31,91 @@ body, h1, h2, h3, h4, h5, h6, p, a, span {
 }
 /* --- 侧边栏挂件美化 (复刻 Stack 默认风格) --- */
 
+/* ==================================
+   侧边栏挂件精修版 (分类 & 标签)
+   ================================== */
 
-/* 1. 布局容器：强制双列网格 */
+/* 1. 网格布局：双列等宽，间距紧凑 */
 .widget-category--list, 
 .tagcloud-list {
     display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important; /* 1:1 等宽双列 */
-    gap: 12px !important; /* 卡片之间的间距 */
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
     padding: 0 !important;
     list-style: none !important;
 }
 
-/* 2. 卡片样式核心 (分类 & 标签通用) */
+/* 2. 卡片通用样式 (分类 & 标签) */
 .widget-category--link, 
 .tag-cloud-link {
-    /* 布局控制：关键！ */
-    display: flex !important;           /* 开启弹性盒，让文字和数字横排 */
-    justify-content: space-between !important; /* 文字靠左，数字靠右 */
-    align-items: center !important;     /* 垂直居中 */
-    
-    /* 外观控制 */
-    background-color: var(--body-background-secondary) !important; /* 跟随主题的淡灰色背景 */
-    padding: 12px 15px !important;      /* 内部留白，让卡片胖一点 */
-    border-radius: 6px !important;      /* 圆角 */
-    border-left: 4px solid #aaa !important; /* 默认左侧灰条 */
-    
-    /* 文字控制 */
-    color: var(--card-text-color-main) !important;
-    font-size: 14px !important;
-    text-decoration: none !important;
-    white-space: nowrap !important;     /* 【核心】强制不换行 */
-    transition: all 0.3s ease;          /* 丝滑动画 */
-    
-    /* 阴影微调 */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-/* 3. 鼠标悬停效果 */
-.widget-category--link:hover, 
-.tag-cloud-link:hover {
-    transform: translateY(-3px); /* 向上浮动 */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    background-color: var(--card-background) !important; /* 变亮 */
-}
-
-/* 4. 数字样式微调 */
-.widget-category--count, 
-.tag-cloud-link span {
-    font-size: 0.9em !important;
-    opacity: 0.6 !important;
-    margin-left: 8px !important;
-}
-
-/* 5. 彩虹配色 (给每个卡片分配不同颜色) */
-/* 分类配色 */
-.widget-category--item:nth-child(1) a { border-left-color: #36cfc9 !important; } /* 青 */
-.widget-category--item:nth-child(2) a { border-left-color: #40a9ff !important; } /* 蓝 */
-.widget-category--item:nth-child(3) a { border-left-color: #9254de !important; } /* 紫 */
-.widget-category--item:nth-child(4) a { border-left-color: #f759ab !important; } /* 粉 */
-.widget-category--item:nth-child(5) a { border-left-color: #ff7a45 !important; } /* 橙 */
-.widget-category--item:nth-child(6) a { border-left-color: #bae637 !important; } /* 绿 */
-
-/* 标签配色 (同理) */
-.tag-cloud-link:nth-child(1) { border-left-color: #36cfc9 !important; }
-.tag-cloud-link:nth-child(2) { border-left-color: #40a9ff !important; }
-.tag-cloud-link:nth-child(3) { border-left-color: #9254de !important; }
-.tag-cloud-link:nth-child(4) { border-left-color: #f759ab !important; }
-.tag-cloud-link:nth-child(5) { border-left-color: #ff7a45 !important; }
-.tag-cloud-link:nth-child(6) { border-left-color: #bae637 !important; }
-
-/* 6. 归档列表美化 (时光机) */
-.widget-archive--list {
-    padding: 0 !important;
-    list-style: none !important;
-}
-.widget-archive--item a {
+    /* 弹性布局：强制不换行，左右对齐 */
     display: flex !important;
     justify-content: space-between !important;
-    padding: 10px 15px !important;
-    border-bottom: 1px dashed rgba(150,150,150,0.2) !important;
+    align-items: center !important;
+    
+    /* 外观：白底(或深色底)、圆角、微阴影 */
+    background-color: var(--card-background) !important;
+    border: 1px solid var(--body-background) !important; /* 加个微边框更精致 */
+    padding: 8px 12px !important; /* 减小内边距，更紧凑 */
+    border-radius: 8px !important;
+    border-left: 3px solid #ccc !important; /* 左侧彩条变细一点 */
+    
+    /* 文字 */
     text-decoration: none !important;
+    transition: all 0.2s ease;
+    height: 100%; /* 确保高度一致 */
+}
+
+/* 3. 左侧文字：限制长度，超出省略 */
+.widget-label {
     color: var(--card-text-color-main) !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    
+    /* 溢出省略号 (防止文字太长撑破) */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 5px;
+}
+
+/* 4. 右侧数字：灰色胶囊样式 */
+.widget-count {
+    background-color: rgba(0,0,0,0.05);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px !important;
+    color: #888 !important;
+    flex-shrink: 0; /* 防止数字被挤压 */
+}
+
+/* 5. 鼠标悬停：上浮 + 阴影 */
+.widget-category--link:hover, 
+.tag-cloud-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    background-color: var(--body-background) !important;
+}
+
+/* 6. 彩虹色条 (循环配色) */
+.widget-category--item:nth-child(odd) a, 
+.tag-cloud-link:nth-child(odd) { border-left-color: #36cfc9 !important; }
+
+.widget-category--item:nth-child(even) a, 
+.tag-cloud-link:nth-child(even) { border-left-color: #597ef7 !important; }
+
+.widget-category--item:nth-child(3n) a, 
+.tag-cloud-link:nth-child(3n) { border-left-color: #ff85c0 !important; }
+
+/* 7. 归档列表 (时光机) 微调 */
+.widget-archive--item {
+    border-bottom: 1px dashed var(--body-background) !important;
+}
+.widget-archive--item a {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 5px;
+    color: var(--card-text-color-main);
+    text-decoration: none;
+    font-size: 14px;
 }
