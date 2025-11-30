@@ -1,19 +1,21 @@
+# 1. 基础设置
 baseurl = "https://my-blog-enu.pages.dev"
 title = "皮的猫's blog"
 languageCode = "zh-cn"
 defaultContentLanguage = "zh-cn"
 hasCJKLanguage = true
 
+# 2. 开启搜索 (生成 index.json)
 [outputs]
     home = ["HTML", "RSS", "JSON"]
 
-# 2. 强制禁用英文
+# 3. 强制禁用英文 (解决菜单重复)
 disableLanguages = ["en"]
 
 [pagination]
     pagerSize = 5
 
-# 3. 语言与菜单配置
+# 4. 语言与菜单配置
 [languages]
     [languages.zh-cn]
         languageName = "Chinese"
@@ -21,9 +23,7 @@ disableLanguages = ["en"]
         title = "皮的猫's blog"
         contentDir = "content"
         
-        # 【关键修复点】
-        # 这里原本有一行 sidebar = "left"，已经被我删掉了！
-        # 必须留空或者只写 [languages.zh-cn.params]，不能赋值。
+        # 侧边栏参数 (保持为空，防止报错)
         [languages.zh-cn.params]
 
         # --- 中文菜单 ---
@@ -39,7 +39,8 @@ disableLanguages = ["en"]
             name = "文章"
             url = "/archives/"
             weight = 2
-            params = { icon = "archive" }
+            # 【关键修改】改成了 file-text，防止报错！
+            params = { icon = "file-text" }
 
         [[languages.zh-cn.menu.main]]
             identifier = "about"
@@ -56,9 +57,8 @@ disableLanguages = ["en"]
             params = { icon = "link" }
         
         [[languages.zh-cn.menu.main]]
-            identifier = "search" 
+            identifier = "search"
             name = "搜索"
-            url = "/search/"  
+            url = "/search/"
             weight = 5
             params = { icon = "search" }
-
