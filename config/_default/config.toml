@@ -48,11 +48,5 @@ disableLanguages = ["en"]
             weight = 3
             params = { icon = "user" }
 
-        [[languages.zh-cn.menu.main]]
-            identifier = "links"
-            name = "友链"
-            url = "/links/"
-            weight = 4
-            params = { icon = "link" }
 
 
