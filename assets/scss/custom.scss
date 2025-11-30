@@ -29,13 +29,59 @@ body, h1, h2, h3, h4, h5, h6, p, a, span {
     display: block !important;
     width: 100%;
 }
-/* --- 侧边栏挂件美化 (复刻 Stack 默认风格) --- */
-
 /* ==================================
-   侧边栏挂件精修版 (分类 & 标签)
+   侧边栏挂件：终极修复版
    ================================== */
 
-/* 1. 网格布局：双列等宽，间距紧凑 */
+/* 1. 标题样式修复 */
+.archive-sidebar .widget-title {
+    font-size: 1.1rem !important;
+    font-weight: bold !important;
+    margin-bottom: 15px !important;
+    color: var(--card-text-color-main) !important; /* 强制跟随主题颜色，解决看不清 */
+    border-left: 4px solid var(--primary); /* 加个左边色条装饰 */
+    padding-left: 10px !important;
+    display: flex;
+    align-items: center;
+}
+
+/* 2. 归档列表美化 (去掉圆点，修复颜色) */
+.widget-archive--list {
+    padding: 0 !important;
+    margin: 0 !important;
+    list-style: none !important; /* 去掉那个讨厌的圆点 */
+}
+
+.widget-archive--item {
+    margin-bottom: 8px !important;
+}
+
+.widget-archive--item a {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 10px 15px !important;
+    background-color: var(--body-background) !important; /* 也就是深色背景 */
+    border-radius: 6px !important;
+    text-decoration: none !important;
+    color: var(--card-text-color-main) !important; /* 关键：解决文字看不清 */
+    transition: all 0.2s ease !important;
+    border: 1px solid transparent;
+}
+
+.widget-archive--item a:hover {
+    background-color: var(--card-background) !important;
+    border-color: rgba(255,255,255,0.1);
+    transform: translateX(5px); /* 悬停右移特效 */
+}
+
+.widget-archive--count {
+    opacity: 0.6;
+    font-size: 0.9em;
+}
+
+
+/* 3. 分类 & 标签 Grid 布局 (保持之前的双列) */
 .widget-category--list, 
 .tagcloud-list {
     display: grid !important;
@@ -45,77 +91,42 @@ body, h1, h2, h3, h4, h5, h6, p, a, span {
     list-style: none !important;
 }
 
-/* 2. 卡片通用样式 (分类 & 标签) */
+/* 4. 卡片样式 (分类 & 标签) */
 .widget-category--link, 
 .tag-cloud-link {
-    /* 弹性布局：强制不换行，左右对齐 */
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
     
-    /* 外观：白底(或深色底)、圆角、微阴影 */
-    background-color: var(--card-background) !important;
-    border: 1px solid var(--body-background) !important; /* 加个微边框更精致 */
-    padding: 8px 12px !important; /* 减小内边距，更紧凑 */
-    border-radius: 8px !important;
-    border-left: 3px solid #ccc !important; /* 左侧彩条变细一点 */
+    background-color: var(--body-background) !important;
+    padding: 10px 12px !important;
+    border-radius: 6px !important;
+    border-left: 3px solid #666 !important;
     
-    /* 文字 */
-    text-decoration: none !important;
-    transition: all 0.2s ease;
-    height: 100%; /* 确保高度一致 */
-}
-
-/* 3. 左侧文字：限制长度，超出省略 */
-.widget-label {
-    color: var(--card-text-color-main) !important;
+    color: var(--card-text-color-main) !important; /* 解决文字看不清 */
     font-size: 14px !important;
-    font-weight: 500 !important;
-    
-    /* 溢出省略号 (防止文字太长撑破) */
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin-right: 5px;
+    text-decoration: none !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* 4. 右侧数字：灰色胶囊样式 */
-.widget-count {
-    background-color: rgba(0,0,0,0.05);
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-size: 12px !important;
-    color: #888 !important;
-    flex-shrink: 0; /* 防止数字被挤压 */
-}
-
-/* 5. 鼠标悬停：上浮 + 阴影 */
 .widget-category--link:hover, 
 .tag-cloud-link:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    background-color: var(--body-background) !important;
+    background-color: var(--card-background) !important;
 }
 
-/* 6. 彩虹色条 (循环配色) */
-.widget-category--item:nth-child(odd) a, 
-.tag-cloud-link:nth-child(odd) { border-left-color: #36cfc9 !important; }
-
-.widget-category--item:nth-child(even) a, 
-.tag-cloud-link:nth-child(even) { border-left-color: #597ef7 !important; }
-
-.widget-category--item:nth-child(3n) a, 
-.tag-cloud-link:nth-child(3n) { border-left-color: #ff85c0 !important; }
-
-/* 7. 归档列表 (时光机) 微调 */
-.widget-archive--item {
-    border-bottom: 1px dashed var(--body-background) !important;
+/* 5. 数字胶囊 */
+.widget-count {
+    background-color: rgba(255,255,255,0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px !important;
 }
-.widget-archive--item a {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 5px;
-    color: var(--card-text-color-main);
-    text-decoration: none;
-    font-size: 14px;
-}
+
+/* 6. 彩虹配色 (必须保留！) */
+.widget-category--item:nth-child(1) a, .tag-cloud-link:nth-child(1) { border-left-color: #36cfc9 !important; }
+.widget-category--item:nth-child(2) a, .tag-cloud-link:nth-child(2) { border-left-color: #40a9ff !important; }
+.widget-category--item:nth-child(3) a, .tag-cloud-link:nth-child(3) { border-left-color: #9254de !important; }
+.widget-category--item:nth-child(4) a, .tag-cloud-link:nth-child(4) { border-left-color: #f759ab !important; }
+.widget-category--item:nth-child(5) a, .tag-cloud-link:nth-child(5) { border-left-color: #ff7a45 !important; }
+.widget-category--item:nth-child(6) a, .tag-cloud-link:nth-child(6) { border-left-color: #bae637 !important; }

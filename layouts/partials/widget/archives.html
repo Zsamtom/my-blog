@@ -1,7 +1,6 @@
 <section class="widget widget-archives card">
     <div class="card-content">
         <div class="widget-title">
-            # <span>📅</span> 
             <span>归档</span>
         </div>
         
@@ -10,7 +9,7 @@
             <li class="widget-archive--item">
                 <a href="/archives/#{{ .Key }}" title="{{ .Key }}">
                     <span>{{ .Key }}</span>
-                    <span style="opacity: 0.6;">{{ len .Pages }}</span>
+                    <span class="widget-archive--count">{{ len .Pages }}</span>
                 </a>
             </li>
             {{ end }}
