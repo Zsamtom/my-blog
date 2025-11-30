@@ -1,0 +1,20 @@
+[
+    {
+        "title": "GitHub",
+        "website": "https://github.com",
+        "image": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+        "description": "这是全球最大的同性交友网站 (示例)"
+    },
+    {
+        "title": "某某的博客",
+        "website": "https://example.com",
+        "image": "https://example.com/avatar.png",
+        "description": "这里写他的博客简介"
+    },
+    {
+        "title": "Stack 主题",
+        "website": "https://github.com/CaiJimmy/hugo-theme-stack",
+        "image": "https://avatars.githubusercontent.com/u/6266754?s=200&v=4",
+        "description": "非常棒的 Hugo 主题"
+    }
+]
