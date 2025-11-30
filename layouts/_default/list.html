@@ -13,18 +13,34 @@
     
     <!-- 左侧：文章列表区域 -->
     <div class="archive-content">
-        <!-- 1. 显示当前页面的标题 (例如: 标签: CSS) -->
-        <header style="margin-bottom: 40px; border-bottom: 1px solid var(--body-background-secondary); padding-bottom: 20px;">
-            <h2 class="section-title" style="font-size: 1.5rem; margin-bottom: 10px;">
+        <!-- 1. 页头区域：显示当前标签/分类的大标题 -->
+        <header style="
+            margin-bottom: 50px; 
+            border-bottom: 2px solid var(--body-background-secondary); 
+            padding-bottom: 30px;
+        ">
+            <!-- 【修改点】加大字号，加粗，使用古风字体 -->
+            <h2 class="section-title" style="
+                font-size: 3.0rem; 
+                margin-bottom: 15px; 
+                font-weight: 900;
+                color: var(--card-text-color-main);
+                font-family: 'Noto Serif SC', serif;
+                letter-spacing: 1px;
+            ">
                 {{ .Title }}
             </h2>
-            <span style="color: #999; font-size: 0.9rem;">
-                共 {{ len .Pages }} 篇文章
+            <!-- 副标题：文章数量 -->
+            <span style="
+                color: #999; 
+                font-size: 1.1rem; 
+                font-family: 'Noto Serif SC', serif;
+            ">
+                收录了 {{ len .Pages }} 篇文章
             </span>
         </header>
 
         <!-- 2. 文章循环逻辑：按年份分组 -->
-        <!-- 注意：这里用 .Pages 而不是 .Site.RegularPages，确保只显示当前标签下的文章 -->
         {{- range .Pages.GroupByDate "2006" -}}
         <div class="archives-group" style="margin-bottom: 50px;">
             <h2 class="section-title" style="
@@ -33,6 +49,7 @@
                 opacity: 0.6;
                 padding-bottom: 10px;
                 border-bottom: 2px solid var(--card-background);
+                font-family: 'Noto Serif SC', serif;
             ">
                 <a href="{{ $.RelPermalink }}#{{ .Key }}">{{ .Key }}</a>
             </h2>
@@ -47,7 +64,6 @@
     </div>
     
     <!-- 右侧：侧边栏 -->
-    <!-- 同样使用 "homepage" Scope 来强制显示那三个漂亮的挂件 -->
     <div class="archive-sidebar" style="position: sticky; top: 20px;">
         {{ partial "sidebar/right.html" (dict "Context" . "Scope" "homepage") }}
     </div>
