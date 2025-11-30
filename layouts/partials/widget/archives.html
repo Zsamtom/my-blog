@@ -1,18 +1,85 @@
-<section class="widget widget-archives card">
-    <div class="card-content">
-        <div class="widget-title">
-            <span>归档</span>
+{{ define "main" }}
+
+<!-- 布局容器：与归档页保持完全一致的 Grid 布局 -->
+<div style="
+    display: grid; 
+    grid-template-columns: minmax(0, 1fr) 400px; 
+    gap: 40px; 
+    width: 100%; 
+    max-width: 1400px; 
+    margin: 0 auto; 
+    padding-top: 20px;
+">
+    
+    <!-- 左侧：文章列表区域 -->
+    <div class="archive-content">
+        <!-- 1. 页头区域：显示当前标签/分类的大标题 -->
+        <header style="
+            margin-bottom: 50px; 
+            border-bottom: 2px solid var(--body-background-secondary); 
+            padding-bottom: 30px;
+        ">
+            <!-- 【修改点】加大字号，加粗，使用古风字体 -->
+            <h2 class="section-title" style="
+                font-size: 3.0rem; 
+                margin-bottom: 15px; 
+                font-weight: 900;
+                color: var(--card-text-color-main);
+                font-family: 'Noto Serif SC', serif;
+                letter-spacing: 1px;
+            ">
+                {{ .Title }}
+            </h2>
+            <!-- 副标题：文章数量 -->
+            <span style="
+                color: #999; 
+                font-size: 1.1rem; 
+                font-family: 'Noto Serif SC', serif;
+            ">
+                收录了 {{ len .Pages }} 篇文章
+            </span>
+        </header>
+
+        <!-- 2. 文章循环逻辑：按年份分组 -->
+        {{- range .Pages.GroupByDate "2006" -}}
+        <div class="archives-group" style="margin-bottom: 50px;">
+            <h2 class="section-title" style="
+                font-size: 2rem; 
+                margin-bottom: 20px; 
+                opacity: 0.6;
+                padding-bottom: 10px;
+                border-bottom: 2px solid var(--card-background);
+                font-family: 'Noto Serif SC', serif;
+            ">
+                <a href="{{ $.RelPermalink }}#{{ .Key }}">{{ .Key }}</a>
+            </h2>
+            
+            <div class="article-list--compact">
+                {{- range .Pages -}}
+                    {{ partial "article-list/compact.html" . }}
+                {{- end -}}
+            </div>
         </div>
-        
-        <ul class="widget-archive--list">
-            {{ range .Context.Site.RegularPages.GroupByDate "2006" }}
-            <li class="widget-archive--item">
-                <a href="/archives/#{{ .Key }}" title="{{ .Key }}">
-                    <span>{{ .Key }}</span>
-                    <span class="widget-archive--count">{{ len .Pages }}</span>
-                </a>
-            </li>
-            {{ end }}
-        </ul>
+        {{- end -}}
     </div>
-</section>
+    
+    <!-- 右侧：侧边栏 -->
+    <div class="archive-sidebar" style="position: sticky; top: 20px;">
+        {{ partial "sidebar/right.html" (dict "Context" . "Scope" "homepage") }}
+    </div>
+
+</div>
+
+<!-- 手机端适配 -->
+<style>
+@media (max-width: 1024px) {
+    div[style*="display: grid"] {
+        grid-template-columns: 1fr !important;
+    }
+    .archive-sidebar {
+        display: none !important;
+    }
+}
+</style>
+
+{{ end }}
