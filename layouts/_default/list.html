@@ -1,0 +1,69 @@
+{{ define "main" }}
+
+<!-- 布局容器：与归档页保持完全一致的 Grid 布局 -->
+<div style="
+    display: grid; 
+    grid-template-columns: minmax(0, 1fr) 400px; 
+    gap: 40px; 
+    width: 100%; 
+    max-width: 1400px; 
+    margin: 0 auto; 
+    padding-top: 20px;
+">
+    
+    <!-- 左侧：文章列表区域 -->
+    <div class="archive-content">
+        <!-- 1. 显示当前页面的标题 (例如: 标签: CSS) -->
+        <header style="margin-bottom: 40px; border-bottom: 1px solid var(--body-background-secondary); padding-bottom: 20px;">
+            <h2 class="section-title" style="font-size: 1.5rem; margin-bottom: 10px;">
+                {{ .Title }}
+            </h2>
+            <span style="color: #999; font-size: 0.9rem;">
+                共 {{ len .Pages }} 篇文章
+            </span>
+        </header>
+
+        <!-- 2. 文章循环逻辑：按年份分组 -->
+        <!-- 注意：这里用 .Pages 而不是 .Site.RegularPages，确保只显示当前标签下的文章 -->
+        {{- range .Pages.GroupByDate "2006" -}}
+        <div class="archives-group" style="margin-bottom: 50px;">
+            <h2 class="section-title" style="
+                font-size: 2rem; 
+                margin-bottom: 20px; 
+                opacity: 0.6;
+                padding-bottom: 10px;
+                border-bottom: 2px solid var(--card-background);
+            ">
+                <a href="{{ $.RelPermalink }}#{{ .Key }}">{{ .Key }}</a>
+            </h2>
+            
+            <div class="article-list--compact">
+                {{- range .Pages -}}
+                    {{ partial "article-list/compact.html" . }}
+                {{- end -}}
+            </div>
+        </div>
+        {{- end -}}
+    </div>
+    
+    <!-- 右侧：侧边栏 -->
+    <!-- 同样使用 "homepage" Scope 来强制显示那三个漂亮的挂件 -->
+    <div class="archive-sidebar" style="position: sticky; top: 20px;">
+        {{ partial "sidebar/right.html" (dict "Context" . "Scope" "homepage") }}
+    </div>
+
+</div>
+
+<!-- 手机端适配 -->
+<style>
+@media (max-width: 1024px) {
+    div[style*="display: grid"] {
+        grid-template-columns: 1fr !important;
+    }
+    .archive-sidebar {
+        display: none !important;
+    }
+}
+</style>
+
+{{ end }}
