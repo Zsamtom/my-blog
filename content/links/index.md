@@ -6,6 +6,7 @@ image:
 comments: true
 ---
 
-如果有需要添加友链的，请电邮 `你的邮箱@qq.com`，希望是生活向的博客哦~
+如果有需要添加友链的，请电邮 `cmuluyin3@gmail.com`，谢谢（握爪）！！
 
-(下面会自动加载 links.json 里的卡片)
+
+test wwww.baidu.com
