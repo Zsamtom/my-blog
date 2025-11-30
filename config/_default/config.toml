@@ -1,21 +1,17 @@
-# 1. 基础设置
 baseurl = "https://my-blog-enu.pages.dev"
 title = "皮的猫's blog"
 languageCode = "zh-cn"
 defaultContentLanguage = "zh-cn"
 hasCJKLanguage = true
 
-# 2. 开启搜索 (生成 index.json)
-[outputs]
-    home = ["HTML", "RSS", "JSON"]
+# 【已删除】开启搜索功能的 [outputs] 代码块已被移除
 
-# 3. 强制禁用英文 (解决菜单重复)
+# 禁用英文
 disableLanguages = ["en"]
 
 [pagination]
     pagerSize = 5
 
-# 4. 语言与菜单配置
 [languages]
     [languages.zh-cn]
         languageName = "Chinese"
@@ -23,10 +19,9 @@ disableLanguages = ["en"]
         title = "皮的猫's blog"
         contentDir = "content"
         
-        # 侧边栏参数 (保持为空，防止报错)
         [languages.zh-cn.params]
+            # 留空
 
-        # --- 中文菜单 ---
         [[languages.zh-cn.menu.main]]
             identifier = "home"
             name = "主页"
@@ -39,8 +34,7 @@ disableLanguages = ["en"]
             name = "文章"
             url = "/archives/"
             weight = 2
-            # 【临时修改】改成 search，这个图标肯定有，先让网站能跑起来
-            params = { icon = "search" }
+            params = { icon = "file-text" }
 
         [[languages.zh-cn.menu.main]]
             identifier = "about"
@@ -56,9 +50,4 @@ disableLanguages = ["en"]
             weight = 4
             params = { icon = "link" }
         
-        [[languages.zh-cn.menu.main]]
-            identifier = "search"
-            name = "搜索"
-            url = "/search/"
-            weight = 5
-            params = { icon = "search" }
+        # 【已删除】搜索菜单项已被移除
