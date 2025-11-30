@@ -1,4 +1,4 @@
-baseurl = "https://my-blog-enu.pages.dev"
+baseurl = "https://3e1fa761.my-blog-enu.pages.dev"
 title = "皮的猫's blog"
 languageCode = "zh-cn"
 defaultContentLanguage = "zh-cn"
@@ -54,5 +54,11 @@ disableLanguages = ["en"]
             url = "/links/"
             weight = 4
             params = { icon = "link" }
-
+        
+        [[languages.zh-cn.menu.main]]
+            identifier = "search" 
+            name = "搜索"
+            url = "/search/"  
+            weight = 5
+            params = { icon = "search" }
 
