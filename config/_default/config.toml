@@ -39,8 +39,8 @@ disableLanguages = ["en"]
             name = "文章"
             url = "/archives/"
             weight = 2
-            # 【关键修改】改成了 file-text，防止报错！
-            params = { icon = "file-text" }
+            # 【临时修改】改成 search，这个图标肯定有，先让网站能跑起来
+            params = { icon = "search" }
 
         [[languages.zh-cn.menu.main]]
             identifier = "about"
