@@ -4,14 +4,16 @@ languageCode = "zh-cn"
 defaultContentLanguage = "zh-cn"
 hasCJKLanguage = true
 
-# 【已删除】开启搜索功能的 [outputs] 代码块已被移除
+[outputs]
+    home = ["HTML", "RSS", "JSON"]
 
-# 禁用英文
+# 2. 强制禁用英文
 disableLanguages = ["en"]
 
 [pagination]
     pagerSize = 5
 
+# 3. 语言与菜单配置
 [languages]
     [languages.zh-cn]
         languageName = "Chinese"
@@ -19,9 +21,12 @@ disableLanguages = ["en"]
         title = "皮的猫's blog"
         contentDir = "content"
         
+        # 【关键修复点】
+        # 这里原本有一行 sidebar = "left"，已经被我删掉了！
+        # 必须留空或者只写 [languages.zh-cn.params]，不能赋值。
         [languages.zh-cn.params]
-            # 留空
 
+        # --- 中文菜单 ---
         [[languages.zh-cn.menu.main]]
             identifier = "home"
             name = "主页"
@@ -34,7 +39,7 @@ disableLanguages = ["en"]
             name = "文章"
             url = "/archives/"
             weight = 2
-            params = { icon = "file-text" }
+            params = { icon = "archive" }
 
         [[languages.zh-cn.menu.main]]
             identifier = "about"
@@ -49,5 +54,5 @@ disableLanguages = ["en"]
             url = "/links/"
             weight = 4
             params = { icon = "link" }
-        
-        # 【已删除】搜索菜单项已被移除
+
+
